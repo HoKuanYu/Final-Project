@@ -126,7 +126,7 @@ function createBomb(){
     texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
     texture.repeat.set(0.5, 0.5);
     var material = new THREE.MeshBasicMaterial({map:texture, side:THREE.DoubleSide});
-    var geometry = new THREE.SphereGeometry(0.9, 30, 30);
+    var geometry = new THREE.SphereGeometry(1.3, 30, 30);
     bomb = new THREE.Mesh(geometry, material);
     bomb.geometry.computeBoundingBox();
     console.log(bomb)

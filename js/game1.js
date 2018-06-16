@@ -331,6 +331,7 @@ function moveObject(){
                 scene.remove(tank1);
                 refresh = false;
                 $("#exit").show();
+                compare();
                 clearInterval(interval);
                 spectrum();
                 setInterval(spectrum, 3000);
@@ -347,6 +348,7 @@ function moveObject(){
                 scene.remove(tank2);
                 refresh = false;
                 $("#exit").show();
+                compare();
                 clearInterval(interval);
                 spectrum();
                 setInterval(spectrum, 3000);
@@ -383,6 +385,31 @@ $("#exit").click(function(event){
     history.go(-1);
 });
 
+function compare(){
+    if(life1 === life2){
+        $("#bgBlack1").show();
+        $("#bgBlack2").show();
+        $("#end1").html("draw");
+        $("#end1").css("color", "greenyellow");
+        $("#end2").html("draw");
+        $("#end2").css("color", "greenyellow");
+    }
+    else if(life1 > life2){
+        $("#bgBlack2").show();
+        $("#end1").html("win");
+        $("#end1").css("color", "red");
+        $("#end2").html("lose");
+        $("#end2").css("color", "white");
+    }
+    else if(life2 > life1){
+        $("#bgBlack1").show();
+        $("#end1").html("lose");
+        $("#end1").css("color", "white");
+        $("#end2").html("win");
+        $("#end2").css("color", "red");
+    }
+}
+
 function spectrum(){
     var hue = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
     $('#exit').animate({color:hue}, 3000);
@@ -397,5 +424,6 @@ var interval = setInterval(function(){
         spectrum();
         clearInterval(interval);
         setInterval(spectrum, 3000);
+        compare();
     }
 }, 1000);

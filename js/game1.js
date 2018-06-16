@@ -23,6 +23,12 @@ manager.onLoad = function(){
     $("#canvas2").width("50%");
     $("#canvas1").height("100%");
     $("#canvas2").height("100%");
+    setTimeout(function(){
+    $("#exit").show();
+    refresh = false;
+    spectrum();
+    setInterval(spectrum, 3000);
+    }, 300);
 };
 //創造坦克
 function createTank(){
@@ -350,12 +356,6 @@ window.addEventListener("keyup", function(event){
 $("#exit").click(function(event){
     history.go(-1);
 });
-setTimeout(function(){
-    $("#exit").show();
-    refresh = false;
-    spectrum();
-    setInterval(spectrum, 3000);
-}, 300);
 
 function spectrum(){
     console.log(123);

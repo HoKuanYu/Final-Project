@@ -12,6 +12,19 @@ body {
     margin: 0;
 }
 
+.time {
+    position: absolute;
+    top: 5%;
+    left: 37%;
+    display: none;
+}
+
+.timeImg {
+    width: 25%;
+    height: 25%;
+    color: red;
+}
+
 .canvas1 {
     float: left;
     margin: 0;

@@ -1,5 +1,5 @@
 var manager = new THREE.LoadingManager();
-var plane, cactus, bush, bomb, tank1, tank2;
+var plane, cactus, bush, bomb, tank1, tank2, backGround;
 var shoot1 = true, shoot2 = true;
 var cannon1 = [], cannon2 = [];
 var bombs = [], bombsDist = [];
@@ -23,6 +23,7 @@ manager.onLoad = function(){
     $("#canvas2").width("50%");
     $("#canvas1").height("100%");
     $("#canvas2").height("100%");
+    $("#time").show();
     setTimeout(function(){
         $("#exit").show();
         refresh = false;
@@ -30,6 +31,28 @@ manager.onLoad = function(){
         setInterval(spectrum, 3000);
     }, 300000);
 };
+function createSkybox() {
+    value = Math.floor(Math.random() * 3);
+    if(value === 0)
+        urlPath = "model/night/";
+    else if(value === 1)
+        urlPath = "model/morning/";
+    else
+        urlPath = "model/evening/";
+    urls = [urlPath + "ft.jpg", urlPath + "bk.jpg", urlPath + "up.jpg"
+            , urlPath + "dn.jpg", urlPath + "rt.jpg", urlPath + "lf.jpg"];
+    textureCube = new THREE.CubeTextureLoader(manager).load(urls);
+    shader = THREE.ShaderLib["cube"];
+    shader.uniforms["tCube"].value = textureCube;
+    material = new THREE.ShaderMaterial({
+        fragmentShader : shader.fragmentShader,
+        vertexShader : shader.vertexShader,
+        uniforms : shader.uniforms,
+        depthWrite : false,
+        side : THREE.BackSide
+    });
+    backGround = new THREE.Mesh(new THREE.CubeGeometry(500, 500, 500), material);
+}
 //創造坦克
 function createTank(){
     new THREE.MTLLoader(manager).load("model/tank/sprut.mtl", function(materials){
@@ -94,10 +117,10 @@ function createBush(){
 function createScreen(){
     var plantPos = [];
     for(var i = 0; i < 130; i++){
-        pos = new THREE.Vector3(Math.random() * 490 - 245, 0, Math.random() * 490 - 245);
+        pos = new THREE.Vector3(Math.random() * 470 - 235, 0, Math.random() * 470 - 235);
         for(var j = 0; j < i; j++){
             while(!(Math.abs(pos.x - plantPos[j].x) > 5 && Math.abs(pos.z - plantPos[j].z) > 5)){
-                pos = new THREE.Vector3(Math.random() * 490 - 245, 0, Math.random() * 490 - 245);
+                pos = new THREE.Vector3(Math.random() * 470 - 235, 0, Math.random() * 470 - 235);
             }
         }
         plantPos[i] = pos;
@@ -129,10 +152,10 @@ function createBomb(){
     var geometry = new THREE.SphereGeometry(1.3, 30, 30);
     bomb = new THREE.Mesh(geometry, material);
     bomb.geometry.computeBoundingBox();
-    console.log(bomb)
 }
 //載入物件
 function initial(){
+    createSkybox();
     createTank();
     createScene();
     createCactus();
@@ -171,12 +194,12 @@ function start(){
     scene.add(tank1);
     scene.add(tank2);
     scene.add(plane);
+    scene.add(backGround);
     createScreen();
     animate();
 }
 //畫面大小更新
 window.addEventListener("resize", function(){
-    console.log(123);
     camera1.aspect = window.innerWidth / 2 / window.innerHeight;
     camera2.aspect = window.innerWidth / 2 / window.innerHeight;
     camera1.updateProjectionMatrix();
@@ -299,7 +322,7 @@ function moveObject(){
         bombs[key].position.x -= Math.sin(bombs[key].rotation.y) * 2;
         bombs[key].position.z -= Math.cos(bombs[key].rotation.y) * 2;
         bombsDist[key] += 2;
-        bombs[key].position.y = 1.8 - bombsDist[key] / 150;
+        bombs[key].position.y = 1.8 - bombsDist[key] / 250;
         bombs[key].boundingBox = new THREE.Box3().setFromObject(bombs[key]);
         if(bombs[key].boundingBox.intersectsBox(tank1.boundingBox)){
             scene.remove(bombs[key]);
@@ -322,9 +345,8 @@ function moveObject(){
                 refresh = false;
                 $("#exit").show();
             }
-            console.log("life2:" + life2);
         }
-        else if(bombsDist[key] >= 150 || Math.abs(bombs[key].position.x) >= 255 || Math.abs(bombs[key].position.z) >= 255){
+        else if(bombsDist[key] >= 250 || Math.abs(bombs[key].position.x) >= 255 || Math.abs(bombs[key].position.z) >= 255){
             scene.remove(bombs[key]);
             delete bombs[key];
             delete bombsDist[key];
@@ -345,7 +367,6 @@ function moveObject(){
 }
 //偵測按壓鍵盤事件
 window.addEventListener("keydown", function(event){
-    console.log(event.keyCode);
     key_pressed[event.keyCode] = true;
 })
 //偵測放開鍵盤事件
@@ -358,7 +379,6 @@ $("#exit").click(function(event){
 });
 
 function spectrum(){
-    console.log(123);
     var hue = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
     $('#exit').animate({color:hue}, 3000);
 }

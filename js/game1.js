@@ -6,7 +6,7 @@ var bombs = [], bombsDist = [];
 var scene, camera1, camera2, renderer1, renderer2;
 var plant = [];
 var key_pressed = [];
-var life1 = 20, life2 = 20;
+var life1 = 100, life2 = 100;
 var refresh = true;
 var bombSound1 = document.getElementById("bombSound1");
 var bombSound2 = document.getElementById("bombSound2");
@@ -24,14 +24,10 @@ manager.onLoad = function(){
     $("#canvas2").width("50%");
     $("#canvas1").height("100%");
     $("#canvas2").height("100%");
+    $("#life1").show();
+    $("#life2").show();
     $("#time").show();
     $("#timeImg").show();
-    setTimeout(function(){
-        $("#exit").show();
-        refresh = false;
-        spectrum();
-        setInterval(spectrum, 3000);
-    }, 300000);
 };
 function createSkybox() {
     value = Math.floor(Math.random() * 3);
@@ -330,27 +326,32 @@ function moveObject(){
             scene.remove(bombs[key]);
             delete bombs[key];
             delete bombsDist[key];
-            life1--;
+            life1 -= 5;
             if(life1 === 0){
                 scene.remove(tank1);
                 refresh = false;
                 $("#exit").show();
                 clearInterval(interval);
                 spectrum();
+                setInterval(spectrum, 3000);
             }
+            $("#dead1").css("left", life1 + "%");
+            $("#dead1").css("width", (100 - life1) + "%");
         }
         else if(bombs[key].boundingBox.intersectsBox(tank2.boundingBox)){
             scene.remove(bombs[key]);
             delete bombs[key];
             delete bombsDist[key];
-            life2--;
+            life2 -= 5;
             if(life2 === 0){
                 scene.remove(tank2);
                 refresh = false;
                 $("#exit").show();
                 clearInterval(interval);
                 spectrum();
+                setInterval(spectrum, 3000);
             }
+            $("#dead2").css("width", (100 - life2) + "%");
         }
         else if(bombsDist[key] >= 200 || Math.abs(bombs[key].position.x) >= 255 || Math.abs(bombs[key].position.z) >= 255){
             scene.remove(bombs[key]);
@@ -366,8 +367,6 @@ function moveObject(){
     camera2.position.set(tank2.position.x + 11.7 * Math.sin(tank2.rotation.y)
                         , camera2.position.y
                         , tank2.position.z + 11.7 * Math.cos(tank2.rotation.y));
-    $("#life1").html("life:" + life1);
-    $("#life2").html("life:" + life2);
     $("#position1").html("x:" + tank1.position.x.toFixed(2) + " y:" + tank1.position.y.toFixed(2) + " z:" + tank1.position.z.toFixed(2));
     $("#position2").html("x:" + tank2.position.x.toFixed(2) + " y:" + tank2.position.y.toFixed(2) + " z:" + tank2.position.z.toFixed(2));
 }
@@ -393,6 +392,10 @@ var interval = setInterval(function(){
     --time;
     $("#time").html(parseInt(time / 60) + ":" + parseInt(time % 60 / 10) + time % 10);
     if(time === 0){
+        $("#exit").show();
+        refresh = false;
+        spectrum();
         clearInterval(interval);
+        setInterval(spectrum, 3000);
     }
 }, 1000);

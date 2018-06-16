@@ -17,6 +17,43 @@ body {
     margin: 0;
 }
 
+.life1 {
+    display: none;
+    position: absolute;
+    top: 13%;
+    left: 3%;
+    width: 30%;
+    height: 4%;
+    border: 0.3vw gray solid;
+    background: linear-gradient(to right, #800000, #990000 , #CC0000, #FF1212);
+}
+
+.dead1 {
+    position: absolute;
+    background-color: black;
+    left: 100%;
+    width: 0%;
+    height: 100%;
+}
+
+.life2 {
+    display: none;
+    position: absolute;
+    top: 13%;
+    left: 67%;
+    width: 30%;
+    height: 4%;
+    border: 0.3vw gray solid;
+    background: linear-gradient(to right, #FF1212, #CC0000, #990000, #800000 );
+}
+
+.dead2 {
+    position: absolute;
+    background-color: black;
+    width: 0%;
+    height: 100%;
+}
+
 .time {
     font-family: myFont3;
     position: absolute;
@@ -104,20 +141,6 @@ body {
 	top: 54%;
 	text-align: center;
 	font-size: 4vw;
-}
-
-.life1 {
-    font-family: myFont;
-    position: absolute;
-    bottom: 5%;
-    left: 2%;
-}
-
-.life2 {
-    font-family: myFont;
-    position: absolute;
-    bottom: 5%;
-    right: 3%;
 }
 
 html {

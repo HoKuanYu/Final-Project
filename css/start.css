@@ -43,6 +43,7 @@ body {
 }
 
 .game1:hover {
+    cursor: pointer;
     font-family: myFont;
     position: absolute;
     top: 58%;

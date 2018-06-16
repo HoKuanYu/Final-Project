@@ -61,6 +61,8 @@ body {
 }
 
 .create {
+    -webkit-user-select: none;
+       -moz-user-select: none;
     position: absolute;
     font-family: myFont2, myFont;
     top: 92%;

@@ -1,0 +1,140 @@
+@font-face {
+    font-family: myFont;
+    src: url("ttf/horrendo.ttf");
+}
+
+@font-face {
+    font-family: myFont2;
+    src: url("ttf/The Bouquet List - demo ver.ttf");
+}
+
+body {
+    margin: 0;
+}
+
+.title {  
+    -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+    -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+    animation: neon1 1.5s ease-in-out infinite alternate; 
+    -webkit-user-select: none;
+       -moz-user-select: none;
+    font-family: myFont;
+    position: absolute;
+    top: 16%;
+    left: 29%;
+    font-size: 13vw;
+    color: #940000;
+    z-index: 1;
+}
+
+.game1 {
+    font-family: myFont;
+    position: absolute;
+    top: 59%;
+    left: 38%;
+    font-size: 3.8vw;
+    height: 11%;
+    width: 23%;
+    background-image: url("te.jpg");
+    background-size: 100% 100%;
+    border: 0;
+    color: white;
+    z-index: 1;
+}
+
+.game1:hover {
+    font-family: myFont;
+    position: absolute;
+    top: 58%;
+    left: 37%;
+    font-size: 4.2vw;
+    height: 13%;
+    width: 25%;
+    z-index: 1;
+}
+
+.background {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+}
+
+.create {
+    position: absolute;
+    font-family: myFont2, myFont;
+    top: 92%;
+    left: 83%;
+    font-size: 2vw;
+    color: white;
+    z-index: 1;
+}
+
+@-webkit-keyframes neon1 {
+    from {
+        text-shadow: 0 0 10px #fff,
+                    0 0 20px  #fff,
+                    0 0 30px  #fff,
+                    0 0 40px  #FF1177,
+                    0 0 70px  #FF1177,
+                    0 0 80px  #FF1177,
+                    0 0 100px #FF1177,
+                    0 0 150px #FF1177;
+    }
+    to {
+        text-shadow: 0 0 5px #fff,
+                    0 0 10px #fff,
+                    0 0 15px #fff,
+                    0 0 20px #FF1177,
+                    0 0 35px #FF1177,
+                    0 0 40px #FF1177,
+                    0 0 50px #FF1177,
+                    0 0 75px #FF1177;
+    }
+}
+
+@-moz-keyframes neon1 {
+    from {
+        text-shadow: 0 0 10px #fff,
+                    0 0 20px  #fff,
+                    0 0 30px  #fff,
+                    0 0 40px  #FF1177,
+                    0 0 70px  #FF1177,
+                    0 0 80px  #FF1177,
+                    0 0 100px #FF1177,
+                    0 0 150px #FF1177;
+    }
+    to {
+        text-shadow: 0 0 5px #fff,
+                    0 0 10px #fff,
+                    0 0 15px #fff,
+                    0 0 20px #FF1177,
+                    0 0 35px #FF1177,
+                    0 0 40px #FF1177,
+                    0 0 50px #FF1177,
+                    0 0 75px #FF1177;
+    }
+}
+
+@keyframes neon1 {
+    from {
+        text-shadow: 0 0 10px #fff,
+                 0 0 20px  #fff,
+                 0 0 30px  #fff,
+                 0 0 40px  #FF1177,
+                 0 0 70px  #FF1177,
+                 0 0 80px  #FF1177,
+                 0 0 100px #FF1177,
+                 0 0 150px #FF1177;
+    }
+    to {
+        text-shadow: 0 0 5px #fff,
+                 0 0 10px #fff,
+                 0 0 15px #fff,
+                 0 0 20px #FF1177,
+                 0 0 35px #FF1177,
+                 0 0 40px #FF1177,
+                 0 0 50px #FF1177,
+                 0 0 75px #FF1177;
+    }
+}

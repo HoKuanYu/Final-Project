@@ -24,11 +24,11 @@ manager.onLoad = function(){
     $("#canvas1").height("100%");
     $("#canvas2").height("100%");
     setTimeout(function(){
-    $("#exit").show();
-    refresh = false;
-    spectrum();
-    setInterval(spectrum, 3000);
-    }, 300);
+        $("#exit").show();
+        refresh = false;
+        spectrum();
+        setInterval(spectrum, 3000);
+    }, 30000);
 };
 //創造坦克
 function createTank(){

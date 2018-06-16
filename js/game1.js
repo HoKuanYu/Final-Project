@@ -322,7 +322,7 @@ function moveObject(){
         bombs[key].position.x -= Math.sin(bombs[key].rotation.y) * 2;
         bombs[key].position.z -= Math.cos(bombs[key].rotation.y) * 2;
         bombsDist[key] += 2;
-        bombs[key].position.y = 1.8 - bombsDist[key] / 250;
+        bombs[key].position.y = 1.8 - bombsDist[key] / 200;
         bombs[key].boundingBox = new THREE.Box3().setFromObject(bombs[key]);
         if(bombs[key].boundingBox.intersectsBox(tank1.boundingBox)){
             scene.remove(bombs[key]);
@@ -346,7 +346,7 @@ function moveObject(){
                 $("#exit").show();
             }
         }
-        else if(bombsDist[key] >= 250 || Math.abs(bombs[key].position.x) >= 255 || Math.abs(bombs[key].position.z) >= 255){
+        else if(bombsDist[key] >= 200 || Math.abs(bombs[key].position.x) >= 255 || Math.abs(bombs[key].position.z) >= 255){
             scene.remove(bombs[key]);
             delete bombs[key];
             delete bombsDist[key];

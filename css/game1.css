@@ -8,21 +8,32 @@
     src: url("ttf/horrendo.ttf");
 }
 
+@font-face {
+    font-family: myFont3;
+    src: url("ttf/Squareo.ttf");
+}
+
 body {
     margin: 0;
 }
 
 .time {
+    font-family: myFont3;
     position: absolute;
-    top: 5%;
-    left: 37%;
+    top: 6%;
+    left: 46.5%;
+    font-size: 5vw;
+    color: greenyellow;
     display: none;
 }
 
 .timeImg {
-    width: 25%;
-    height: 25%;
-    color: red;
+    position: absolute;
+    top: 4.5%;
+    left: 39.5%;
+    width: 5.5%;
+    height: 12.5%;
+    display: none;
 }
 
 .canvas1 {

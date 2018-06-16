@@ -10,6 +10,7 @@ var life1 = 20, life2 = 20;
 var refresh = true;
 var bombSound1 = document.getElementById("bombSound1");
 var bombSound2 = document.getElementById("bombSound2");
+var time = 300;
 initial();
 //載入畫面
 manager.onProgress = function(object, item, total){
@@ -24,6 +25,7 @@ manager.onLoad = function(){
     $("#canvas1").height("100%");
     $("#canvas2").height("100%");
     $("#time").show();
+    $("#timeImg").show();
     setTimeout(function(){
         $("#exit").show();
         refresh = false;
@@ -333,6 +335,8 @@ function moveObject(){
                 scene.remove(tank1);
                 refresh = false;
                 $("#exit").show();
+                clearInterval(interval);
+                spectrum();
             }
         }
         else if(bombs[key].boundingBox.intersectsBox(tank2.boundingBox)){
@@ -344,6 +348,8 @@ function moveObject(){
                 scene.remove(tank2);
                 refresh = false;
                 $("#exit").show();
+                clearInterval(interval);
+                spectrum();
             }
         }
         else if(bombsDist[key] >= 200 || Math.abs(bombs[key].position.x) >= 255 || Math.abs(bombs[key].position.z) >= 255){
@@ -382,3 +388,11 @@ function spectrum(){
     var hue = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
     $('#exit').animate({color:hue}, 3000);
 }
+
+var interval = setInterval(function(){
+    --time;
+    $("#time").html(parseInt(time / 60) + ":" + parseInt(time % 60 / 10) + time % 10);
+    if(time === 0){
+        clearInterval(interval);
+    }
+}, 1000);

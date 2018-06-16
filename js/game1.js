@@ -28,7 +28,7 @@ manager.onLoad = function(){
         refresh = false;
         spectrum();
         setInterval(spectrum, 3000);
-    }, 30000);
+    }, 300000);
 };
 //創造坦克
 function createTank(){
@@ -275,7 +275,7 @@ function moveObject(){
             bombsDist.push(0);
             scene.add(temp);
             shoot1 = false;
-            setTimeout(function(){shoot1 = true;}, 1000);
+            setTimeout(function(){shoot1 = true;}, 1500);
         }
     }
     if(key_pressed[13]){
@@ -290,7 +290,7 @@ function moveObject(){
             bombsDist.push(0);
             scene.add(temp);
             shoot2 = false;
-            setTimeout(function(){shoot2 = true;}, 1000);
+            setTimeout(function(){shoot2 = true;}, 1500);
         }
     }
     tank1.boundingBox = new THREE.Box3().setFromObject(tank1.children[0]);

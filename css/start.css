@@ -30,7 +30,7 @@ body {
 .game1 {
     font-family: myFont;
     position: absolute;
-    top: 59%;
+    top: 57%;
     left: 38%;
     font-size: 3.8vw;
     height: 11%;
@@ -46,7 +46,34 @@ body {
     cursor: pointer;
     font-family: myFont;
     position: absolute;
-    top: 58%;
+    top: 56%;
+    left: 37%;
+    font-size: 4.2vw;
+    height: 13%;
+    width: 25%;
+    z-index: 1;
+}
+
+.introduce {
+    font-family: myFont;
+    position: absolute;
+    top: 75%;
+    left: 38%;
+    font-size: 3.8vw;
+    height: 11%;
+    width: 23%;
+    background-image: url("te.jpg");
+    background-size: 100% 100%;
+    border: 0;
+    color: white;
+    z-index: 1;
+}
+
+.introduce:hover {
+    cursor: pointer;
+    font-family: myFont;
+    position: absolute;
+    top: 74%;
     left: 37%;
     font-size: 4.2vw;
     height: 13%;

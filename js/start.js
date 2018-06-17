@@ -4,6 +4,7 @@ $(document).ready(function() {
     function spectrum(){
         var hue = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
         $('#game1').animate({color:hue}, 3000);
+        $('#introduce').animate({color:hue}, 3000);
     }
 });
 

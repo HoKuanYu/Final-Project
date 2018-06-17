@@ -12,6 +12,13 @@ body {
     margin: 0;
 }
 
+.fb-share-button {
+    position: absolute;
+    top: 84%;
+    left: 87%;
+    z-index: 10;
+}
+
 .ppt {
     position: absolute;
     top: 80%;

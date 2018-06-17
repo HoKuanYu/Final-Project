@@ -14,21 +14,21 @@ body {
 
 .fb-share-button {
     position: absolute;
-    top: 84%;
-    left: 87%;
+    top: 86%;
+    left: 92%;
     z-index: 10;
 }
 
 .ppt {
     position: absolute;
-    top: 80%;
-    left: 93%;
+    top: 71%;
+    left: 91%;
     z-index: 10;
 }
 
 .pptImg {
-    width: 80%;
-    height: 80%;
+    width: 60%;
+    height: 12%;
 }
 
 .title {  

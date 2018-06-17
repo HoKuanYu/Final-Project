@@ -27,10 +27,11 @@ body {
        -moz-user-select: none;
     font-family: myFont4;
     position: absolute;
-    top: 40%;
+    top: 33%;
     width: 50%;
     text-align: center;
     font-size: 10vw;
+    z-index: 1253;
 }
 
 .end2 {
@@ -38,11 +39,12 @@ body {
        -moz-user-select: none;
     font-family: myFont4;
     position: absolute;
-    top: 40%;
+    top: 33%;
     left: 50%;
     width: 50%;
     text-align: center;
     font-size: 10vw;
+    z-index: 1253;
 }
 
 
@@ -162,7 +164,7 @@ body {
 .exit {
     font-family: myFont2;
     position: absolute;
-    top: 59%;
+    top: 65%;
     left: 38%;
     font-size: 5.8vw;
     height: 11%;

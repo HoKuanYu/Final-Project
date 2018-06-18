@@ -286,6 +286,7 @@ function moveObject(){
     }
     if(key_pressed[32]){
         if(shoot1){
+            bombSound1.currentTime = 0;
             bombSound1.play(true);
             temp = bomb.clone();
             temp.rotation.y = cannon1[0].rotation.y + tank1.rotation.y;
@@ -301,6 +302,7 @@ function moveObject(){
     }
     if(key_pressed[13]){
         if(shoot2){
+            bombSound2.currentTime = 0;
             bombSound2.play(true);
             temp = bomb.clone();
             temp.rotation.y = cannon2[0].rotation.y + tank2.rotation.y;

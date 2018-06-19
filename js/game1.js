@@ -296,6 +296,7 @@ function moveObject(){
     }
     if(key_pressed[32]){
         if(shoot1){
+            document.getElementById("bombSound1").addEventListener("ended",function(){this.load();},false);
             var bombSound1 = document.getElementById("bombSound1");
             bombSound1.play();
             bombSound1.currentTime = 0;

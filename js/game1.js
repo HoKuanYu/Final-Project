@@ -29,7 +29,7 @@ manager.onLoad = function(){
     var interval = setInterval(function(){
         --time;
         $("#time").html(parseInt(time / 60) + ":" + parseInt(time % 60 / 10) + time % 10);
-        if(time === 0){
+        if(time === 0 || refresh === false){
             $("#exit").show();
             refresh = false;
             spectrum();
@@ -296,7 +296,7 @@ function moveObject(){
     }
     if(key_pressed[32]){
         if(shoot1){
-            var audio = new Audio("bombSound.mp3")
+            audio = new Audio("bombSound.mp3")
             audio.load();
             audio.play();
             temp = bomb.clone();
@@ -313,9 +313,9 @@ function moveObject(){
     }
     if(key_pressed[13]){
         if(shoot2){
-            var bombSound2 = document.getElementById("bombSound2");
-            bombSound2.play();
-            bombSound2.currentTime = 0;
+            audio = new Audio("bombSound.mp3")
+            audio.load();
+            audio.play();
             temp = bomb.clone();
             temp.rotation.y = cannon2[0].rotation.y + tank2.rotation.y;
             temp.position.set(tank2.position.x - 7 * Math.sin(temp.rotation.y)

@@ -296,10 +296,9 @@ function moveObject(){
     }
     if(key_pressed[32]){
         if(shoot1){
-            document.getElementById("bombSound1").addEventListener("ended",function(){this.load();},false);
-            var bombSound1 = document.getElementById("bombSound1");
-            bombSound1.play();
-            bombSound1.currentTime = 0;
+            var audio = new Audio("bombSound.mp3")
+            audio.load();
+            audio.play();
             temp = bomb.clone();
             temp.rotation.y = cannon1[0].rotation.y + tank1.rotation.y;
             temp.position.set(tank1.position.x - 7 * Math.sin(temp.rotation.y)

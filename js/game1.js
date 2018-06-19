@@ -8,8 +8,6 @@ var plant = [];
 var key_pressed = [];
 var life1 = 100, life2 = 100;
 var refresh = true;
-var bombSound1 = document.getElementById("bombSound1");
-var bombSound2 = document.getElementById("bombSound2");
 var time = 300;
 initial();
 //載入畫面
@@ -298,8 +296,9 @@ function moveObject(){
     }
     if(key_pressed[32]){
         if(shoot1){
-            bombSound1.currentTime = 0;
+            var bombSound1 = document.getElementById("bombSound1");
             bombSound1.play();
+            bombSound1.currentTime = 0;
             temp = bomb.clone();
             temp.rotation.y = cannon1[0].rotation.y + tank1.rotation.y;
             temp.position.set(tank1.position.x - 7 * Math.sin(temp.rotation.y)
@@ -314,8 +313,9 @@ function moveObject(){
     }
     if(key_pressed[13]){
         if(shoot2){
-            bombSound2.currentTime = 0;
+            var bombSound2 = document.getElementById("bombSound2");
             bombSound2.play();
+            bombSound2.currentTime = 0;
             temp = bomb.clone();
             temp.rotation.y = cannon2[0].rotation.y + tank2.rotation.y;
             temp.position.set(tank2.position.x - 7 * Math.sin(temp.rotation.y)

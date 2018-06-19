@@ -28,6 +28,18 @@ manager.onLoad = function(){
     $("#life2").show();
     $("#time").show();
     $("#timeImg").show();
+    var interval = setInterval(function(){
+        --time;
+        $("#time").html(parseInt(time / 60) + ":" + parseInt(time % 60 / 10) + time % 10);
+        if(time === 0){
+            $("#exit").show();
+            refresh = false;
+            spectrum();
+            clearInterval(interval);
+            setInterval(spectrum, 3000);
+            compare();
+        }
+    }, 1000);
 };
 function createSkybox() {
     value = Math.floor(Math.random() * 3);
@@ -287,7 +299,7 @@ function moveObject(){
     if(key_pressed[32]){
         if(shoot1){
             bombSound1.currentTime = 0;
-            bombSound1.play(true);
+            bombSound1.play();
             temp = bomb.clone();
             temp.rotation.y = cannon1[0].rotation.y + tank1.rotation.y;
             temp.position.set(tank1.position.x - 7 * Math.sin(temp.rotation.y)
@@ -303,7 +315,7 @@ function moveObject(){
     if(key_pressed[13]){
         if(shoot2){
             bombSound2.currentTime = 0;
-            bombSound2.play(true);
+            bombSound2.play();
             temp = bomb.clone();
             temp.rotation.y = cannon2[0].rotation.y + tank2.rotation.y;
             temp.position.set(tank2.position.x - 7 * Math.sin(temp.rotation.y)
@@ -416,16 +428,3 @@ function spectrum(){
     var hue = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
     $('#exit').animate({color:hue}, 3000);
 }
-
-var interval = setInterval(function(){
-    --time;
-    $("#time").html(parseInt(time / 60) + ":" + parseInt(time % 60 / 10) + time % 10);
-    if(time === 0){
-        $("#exit").show();
-        refresh = false;
-        spectrum();
-        clearInterval(interval);
-        setInterval(spectrum, 3000);
-        compare();
-    }
-}, 1000);
